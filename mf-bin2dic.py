@@ -21,7 +21,7 @@ def generate_keys(input_file):
 
 # Example usage:
 if len(sys.argv) < 2:
-    print("Usage: python script_name.py input_file.bin")
+    print("Usage: python mf-bin2dic.py input_file.bin")
 else:
     input_file_path = sys.argv[1]
     generate_keys(input_file_path)
