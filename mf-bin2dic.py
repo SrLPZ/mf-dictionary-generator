@@ -34,7 +34,7 @@ def generate_keys(input_file):
 
         # Abrir el archivo de texto en modo escritura
         with open(output_file, 'w') as keys_file:
-        # Escribir cada clave hexadecimal en el archivo de texto en el orden intercalado
+        # Escribir cada clave hexadecimal en el archivo de texto
             for index, key in enumerate(unique_keys_in_order, start=1):
                 keys_file.write(f"{key}\n")
 
