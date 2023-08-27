@@ -18,6 +18,16 @@ def generate_keys(input_file):
             interleaved_keys.append(keys[i])
             interleaved_keys.append(keys[i + half_length])
         
+        # Crear una lista para mantener el orden original de las claves únicas
+        unique_keys_in_order = []
+        seen_keys = set()
+
+        # Mantener el orden original y eliminar claves duplicadas
+        for key in interleaved_keys:
+            if key not in seen_keys:
+                seen_keys.add(key)
+                unique_keys_in_order.append(key)
+        
         dir_name = os.path.dirname(input_file)
         file_name = os.path.splitext(os.path.basename(input_file))[0]
         output_file = os.path.join(dir_name, f"{file_name}.dic")
@@ -25,7 +35,7 @@ def generate_keys(input_file):
         # Abrir el archivo de texto en modo escritura
         with open(output_file, 'w') as keys_file:
         # Escribir cada clave hexadecimal en el archivo de texto en el orden intercalado
-            for index, key in enumerate(interleaved_keys, start=1):
+            for index, key in enumerate(unique_keys_in_order, start=1):
                 keys_file.write(f"{key}\n")
 
         print(f"Dictionary has been generated and written to {output_file}.")
